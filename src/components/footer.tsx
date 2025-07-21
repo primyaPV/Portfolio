@@ -18,9 +18,9 @@ export default function Footer() {
             </Link>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <Link href="mailto:primyatom@gmail.com" aria-label="Email">
+            <a href="mailto:primyatom@gmail.com" aria-label="Email">
               <Mail className="h-5 w-5" />
-            </Link>
+            </a>
           </Button>
         </div>
       </div>
