@@ -1,4 +1,4 @@
-import { Github, Mail, Phone } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
@@ -20,11 +20,6 @@ export default function Footer() {
           <Button variant="ghost" size="icon" asChild>
             <Link href="mailto:primyatom@gmail.com" aria-label="Email">
               <Mail className="h-5 w-5" />
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="tel:+1234567890" aria-label="Phone">
-              <Phone className="h-5 w-5" />
             </Link>
           </Button>
         </div>
