@@ -17,11 +17,13 @@ export default function Footer() {
               <Github className="h-5 w-5" />
             </Link>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="mailto:primyatom@gmail.com" aria-label="Email">
-              <Mail className="h-5 w-5" />
-            </a>
-          </Button>
+          <a
+            href="mailto:primyatom@gmail.com"
+            aria-label="Email"
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-accent hover:text-accent-foreground h-10 w-10"
+          >
+            <Mail className="h-5 w-5" />
+          </a>
         </div>
       </div>
     </footer>
