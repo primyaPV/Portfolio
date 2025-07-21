@@ -28,6 +28,7 @@ export default function ProjectCard({ title, description, image, imageHint, tags
                 src={image}
                 alt={title}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                 data-ai-hint={imageHint}
               />
@@ -49,7 +50,7 @@ export default function ProjectCard({ title, description, image, imageHint, tags
       <DialogContent className="max-w-3xl">
         <DialogHeader>
           <div className="relative mb-4 h-80 w-full rounded-lg overflow-hidden bg-muted">
-             <Image src={image} alt={title} fill className="object-contain p-4" data-ai-hint={imageHint} />
+             <Image src={image} alt={title} fill sizes="100vw" className="object-contain p-4" data-ai-hint={imageHint} />
           </div>
           <DialogTitle className="font-headline text-2xl font-bold">{title}</DialogTitle>
           <div className="flex flex-wrap gap-2 pt-2">
