@@ -23,12 +23,12 @@ export default function ProjectCard({ title, description, image, imageHint, tags
       <DialogTrigger asChild>
         <Card className="group overflow-hidden transition-all hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-2 duration-300">
           <CardContent className="p-0">
-            <div className="relative h-56 w-full">
+            <div className="relative h-60 w-full bg-muted">
               <Image
                 src={image}
                 alt={title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
                 data-ai-hint={imageHint}
               />
             </div>
@@ -48,8 +48,8 @@ export default function ProjectCard({ title, description, image, imageHint, tags
       </DialogTrigger>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
-          <div className="relative mb-4 h-64 w-full rounded-lg overflow-hidden">
-             <Image src={image} alt={title} fill className="object-cover" data-ai-hint={imageHint} />
+          <div className="relative mb-4 h-80 w-full rounded-lg overflow-hidden bg-muted">
+             <Image src={image} alt={title} fill className="object-contain p-4" data-ai-hint={imageHint} />
           </div>
           <DialogTitle className="font-headline text-2xl font-bold">{title}</DialogTitle>
           <div className="flex flex-wrap gap-2 pt-2">
