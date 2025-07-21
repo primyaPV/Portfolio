@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Relaxplzz Task Manager",
     description: "A streamlined task management application designed for simplicity and efficiency, helping users to focus on what matters most.",
-    image: "https://placehold.co/600x400.png",
+    image: "/770.png",
     imageHint: "task manager",
     tags: ["React", "TypeScript", "Tailwind CSS", "Firebase"],
     liveUrl: "#",
