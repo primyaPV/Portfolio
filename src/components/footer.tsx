@@ -13,7 +13,7 @@ export default function Footer() {
         </p>
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" asChild>
-            <Link href="https://github.com" target="_blank" aria-label="GitHub">
+            <Link href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="h-5 w-5" />
             </Link>
           </Button>

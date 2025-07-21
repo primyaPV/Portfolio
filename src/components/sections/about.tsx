@@ -26,7 +26,7 @@ export default function About() {
         </div>
         <div className="mt-12 text-center">
           <Button asChild size="lg" className="gap-2">
-            <a href="/primya.pdf" download>
+            <a href="/primya.pdf" download rel="noopener noreferrer">
               <Download className="h-5 w-5" />
               Download Resume
             </a>

@@ -42,7 +42,7 @@ export default function Header() {
         </nav>
         <div className="ml-auto flex items-center gap-4">
           <Button asChild variant="outline">
-            <a href="/primya.pdf" download>
+            <a href="/primya.pdf" download rel="noopener noreferrer">
               Download Resume
             </a>
           </Button>
