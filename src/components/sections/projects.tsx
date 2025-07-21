@@ -4,7 +4,7 @@ const projects = [
   {
     title: "Iwin Life Platform",
     description: "A comprehensive platform for managing life goals, tasks, and progress tracking, built with a modern front-end framework.",
-    image: "https://placehold.co/600x400.png",
+    image: "/iwin-logo.png",
     imageHint: "platform dashboard",
     tags: ["Angular", "TypeScript", "SCSS", "Node.js"],
     liveUrl: "#",
