@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Button } from '../ui/button';
@@ -5,6 +6,7 @@ import { Download, Loader2 } from 'lucide-react';
 import { useTransition } from 'react';
 import { getResumeFile } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
 
 export default function About() {
   const [isPending, startTransition] = useTransition();
@@ -45,8 +47,14 @@ export default function About() {
           <div className="flex justify-center">
             <div className="flex h-64 w-64 items-center justify-center rounded-full bg-primary/10 p-4 animate-float">
                <div className="flex h-full w-full items-center justify-center rounded-full bg-primary/20 p-4">
-                 <div className="flex h-full w-full items-center justify-center rounded-full bg-primary/30">
-                  <span className="font-headline text-5xl font-bold text-primary">PV</span>
+                 <div className="relative flex h-full w-full items-center justify-center rounded-full bg-primary/30 overflow-hidden">
+                    <Image 
+                      src="/image.png" 
+                      alt="Primya PV"
+                      fill
+                      className="object-cover"
+                      data-ai-hint="portrait"
+                    />
                  </div>
               </div>
             </div>
