@@ -1,7 +1,35 @@
-import { Button } from "../ui/button";
-import { Download } from "lucide-react";
+'use client';
+
+import { Button } from '../ui/button';
+import { Download, Loader2 } from 'lucide-react';
+import { useTransition } from 'react';
+import { getResumeFile } from '@/app/actions';
+import { useToast } from '@/hooks/use-toast';
 
 export default function About() {
+  const [isPending, startTransition] = useTransition();
+  const { toast } = useToast();
+
+  const handleDownload = () => {
+    startTransition(async () => {
+      const result = await getResumeFile();
+      if (result.success && result.file) {
+        const link = document.createElement('a');
+        link.href = `data:application/pdf;base64,${result.file}`;
+        link.download = 'primya.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        toast({
+          title: 'Uh oh! Something went wrong.',
+          description: result.error,
+          variant: 'destructive',
+        });
+      }
+    });
+  };
+
   return (
     <section id="about" className="w-full py-20 lg:py-32">
       <div className="container mx-auto">
@@ -25,11 +53,13 @@ export default function About() {
           </div>
         </div>
         <div className="mt-12 text-center">
-          <Button asChild size="lg" className="gap-2">
-            <a href="/primya.pdf" download rel="noopener noreferrer">
+          <Button size="lg" className="gap-2" onClick={handleDownload} disabled={isPending}>
+            {isPending ? (
+              <Loader2 className="h-5 w-5 animate-spin" />
+            ) : (
               <Download className="h-5 w-5" />
-              Download Resume
-            </a>
+            )}
+            Download Resume
           </Button>
         </div>
       </div>

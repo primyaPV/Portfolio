@@ -1,11 +1,13 @@
-"use client";
+'use client';
 
 import Link from 'next/link';
-import { Menu, Code } from 'lucide-react';
+import { Menu, Code, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from './theme-toggle';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition } from 'react';
+import { getResumeFile } from '@/app/actions';
+import { useToast } from '@/hooks/use-toast';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -17,6 +19,8 @@ const navLinks = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const { toast } = useToast();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +29,26 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleDownload = () => {
+    startTransition(async () => {
+      const result = await getResumeFile();
+      if (result.success && result.file) {
+        const link = document.createElement('a');
+        link.href = `data:application/pdf;base64,${result.file}`;
+        link.download = 'primya.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        toast({
+          title: 'Uh oh! Something went wrong.',
+          description: result.error,
+          variant: 'destructive',
+        });
+      }
+    });
+  };
 
   return (
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'border-b bg-background/80 backdrop-blur-sm' : 'bg-background'}`}>
@@ -41,10 +65,9 @@ export default function Header() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-4">
-          <Button asChild variant="outline">
-            <a href="/primya.pdf" download rel="noopener noreferrer">
-              Download Resume
-            </a>
+          <Button variant="outline" onClick={handleDownload} disabled={isPending}>
+            {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            Download Resume
           </Button>
           <ThemeToggle />
           <Sheet>
