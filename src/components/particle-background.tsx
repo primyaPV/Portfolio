@@ -49,10 +49,10 @@ export default function ParticleBackground() {
       }
 
       update() {
-        if (this.x > canvas.width || this.x < 0) {
+        if (this.x > canvas!.width || this.x < 0) {
           this.directionX = -this.directionX;
         }
-        if (this.y > canvas.height || this.y < 0) {
+        if (this.y > canvas!.height || this.y < 0) {
           this.directionY = -this.directionY;
         }
         this.x += this.directionX;
